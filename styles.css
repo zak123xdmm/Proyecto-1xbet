@@ -1,28 +1,28 @@
-/* RESET */
+/* ===================== RESET BÁSICO ===================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
 }
 
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f6f8;
     color: #222;
+    line-height: 1.6;
 }
 
-/* HEADER */
+/* ===================== HEADER ===================== */
 .site-header {
     background-color: #1a1a1a;
     color: #fff;
     padding: 1rem 2rem;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    flex-wrap: wrap;
+    gap: 1rem;
+    position: relative;
 }
 
 .brand {
@@ -31,9 +31,40 @@ body {
     color: #ff9800;
 }
 
-.main-nav ul {
-    list-style: none;
+/* Menú hamburguesa */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    transition: all 0.3s;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Menú principal */
+.main-nav {
     display: flex;
+    gap: 1.5rem;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
     gap: 1.5rem;
 }
 
@@ -48,6 +79,7 @@ body {
     color: #ff9800;
 }
 
+/* Formulario búsqueda/login */
 .search-login {
     display: flex;
     gap: 0.5rem;
@@ -68,20 +100,21 @@ body {
     cursor: pointer;
     border-radius: 4px;
     font-weight: 600;
+    transition: background-color 0.3s;
 }
 
 .btn.login:hover {
     background-color: #e68a00;
 }
 
-/* LAYOUT */
+/* ===================== LAYOUT PRINCIPAL ===================== */
 .layout {
     display: flex;
     gap: 2rem;
     padding: 2rem;
 }
 
-/* SIDEBAR */
+/* ===================== SIDEBAR ===================== */
 .sidebar {
     flex: 1;
     max-width: 250px;
@@ -98,46 +131,83 @@ body {
     color: #333;
 }
 
-/* GRID PRINCIPAL */
+.montos {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+.monto {
+    background-color: #ff9800;
+    color: #fff;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.monto:hover {
+    background-color: #e68a00;
+}
+
+.btn.apostar {
+    width: 100%;
+    margin-top: 0.5rem;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn.apostar:hover {
+    background-color: #43a047;
+}
+
+/* ===================== MAIN CONTENT ===================== */
 .main-content {
     flex: 3;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
 }
 
-/* TARJETAS */
+/* Evento card */
 .evento {
     background-color: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .evento:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
 
 .evento h3 {
-    padding: 0.5rem 1rem;
     font-size: 1.2rem;
     color: #ff9800;
+    padding: 0.5rem 1rem;
 }
 
 .evento figure {
     margin: 0;
-    position: relative;
+    overflow: hidden;
 }
 
 .evento figure img {
     width: 100%;
-    height: 180px;
+    height: 160px;
     object-fit: cover;
-    display: block;
     transition: transform 0.3s;
 }
 
@@ -152,11 +222,12 @@ body {
     padding: 0.3rem 0;
 }
 
+/* Opciones de apuesta */
 .opciones {
     display: flex;
-    gap: 5px;
     flex-wrap: wrap;
-    padding: 0.5rem 1rem 1rem 1rem;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
 }
 
 .opciones button {
@@ -169,25 +240,24 @@ body {
     cursor: pointer;
     border-radius: 5px;
     font-weight: 600;
+    transition: background-color 0.3s;
 }
 
 .opciones button:hover {
     background-color: #e68a00;
 }
 
-/* FOOTER */
+/* ===================== FOOTER ===================== */
 .site-footer {
     background-color: #1a1a1a;
     color: #fff;
     padding: 1rem 2rem;
     margin-top: 2rem;
-    text-align: center;
 }
 
 .footer-nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
     gap: 1rem;
     margin-top: 0.5rem;
 }
@@ -195,14 +265,15 @@ body {
 .footer-nav a {
     color: #ff9800;
     font-weight: 500;
+    text-decoration: none;
 }
 
 .footer-nav a:hover {
     color: #fff;
 }
 
-/* RESPONSIVE */
-@media(max-width: 1024px) {
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1024px) {
     .layout {
         flex-direction: column;
     }
@@ -211,23 +282,44 @@ body {
         max-width: 100%;
         margin-bottom: 2rem;
     }
+
+    .main-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-@media(max-width: 480px) {
-    .main-nav ul {
+@media (max-width: 768px) {
+    .main-nav {
         display: none;
+        flex-direction: column;
+        background-color: #1a1a1a;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 2rem;
+    }
+
+    .main-nav.nav-active {
+        display: flex;
     }
 
     .hamburger {
-        display: block;
-        cursor: pointer;
-        font-size: 1.5rem;
-        background: none;
-        border: none;
-        color: #fff;
+        display: flex;
     }
 
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
     .evento figure img {
         height: 140px;
+    }
+
+    .opciones button {
+        font-size: 0.85rem;
+        padding: 0.35rem;
     }
 }
