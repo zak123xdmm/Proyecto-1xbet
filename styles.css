@@ -1,18 +1,17 @@
-/* ===================== RESET BÁSICO ===================== */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f6f8;
     color: #222;
-    line-height: 1.6;
 }
 
-/* ===================== HEADER ===================== */
+/* HEADER */
 .site-header {
     background-color: #1a1a1a;
     color: #fff;
@@ -21,10 +20,12 @@ body {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.site-header .brand {
+.brand {
     font-size: 1.8rem;
     font-weight: bold;
     color: #ff9800;
@@ -38,6 +39,8 @@ body {
 
 .nav-link {
     font-weight: 600;
+    color: #fff;
+    text-decoration: none;
     transition: color 0.3s;
 }
 
@@ -65,21 +68,20 @@ body {
     cursor: pointer;
     border-radius: 4px;
     font-weight: 600;
-    transition: background-color 0.3s;
 }
 
 .btn.login:hover {
     background-color: #e68a00;
 }
 
-/* ===================== LAYOUT PRINCIPAL ===================== */
+/* LAYOUT */
 .layout {
     display: flex;
     gap: 2rem;
     padding: 2rem;
 }
 
-/* ===================== SIDEBAR ===================== */
+/* SIDEBAR */
 .sidebar {
     flex: 1;
     max-width: 250px;
@@ -96,99 +98,46 @@ body {
     color: #333;
 }
 
-.montos {
-    display: flex;
-    gap: 0.5rem;
-    margin: 0.5rem 0;
-}
-
-.monto {
-    background-color: #ff9800;
-    color: #fff;
-    border: none;
-    padding: 0.4rem 0.8rem;
-    cursor: pointer;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: background-color 0.3s;
-}
-
-.monto:hover {
-    background-color: #e68a00;
-}
-
-.btn.apostar {
-    width: 100%;
-    margin-top: 0.5rem;
-    background-color: #4caf50;
-    color: #fff;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: 600;
-    transition: background-color 0.3s;
-}
-
-.btn.apostar:hover {
-    background-color: #43a047;
-}
-
-/* ===================== MAIN CONTENT ===================== */
+/* GRID PRINCIPAL */
 .main-content {
     flex: 3;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
-/* Categoría */
-.categoria-header h2 {
-    font-size: 1.5rem;
-    color: #1a1a1a;
-    margin-bottom: 0.3rem;
-}
-
-.categoria-header .descripcion {
-    color: #555;
-    font-size: 0.95rem;
-}
-
-/* Evento card */
+/* TARJETAS */
 .evento {
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
-    min-height: 360px; /* altura uniforme */
 }
 
 .evento:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 .evento h3 {
+    padding: 0.5rem 1rem;
     font-size: 1.2rem;
     color: #ff9800;
-    padding: 0 1rem;
 }
 
 .evento figure {
     margin: 0;
     position: relative;
-    flex: 1; /* ocupa el espacio disponible */
-    overflow: hidden;
 }
 
 .evento figure img {
     width: 100%;
-    height: 200px; /* altura fija para uniformidad */
-    object-fit: cover; /* recorta y mantiene proporción */
+    height: 180px;
+    object-fit: cover;
+    display: block;
     transition: transform 0.3s;
 }
 
@@ -203,12 +152,11 @@ body {
     padding: 0.3rem 0;
 }
 
-/* Opciones de apuesta */
 .opciones {
     display: flex;
-    gap: 0.5rem;
+    gap: 5px;
     flex-wrap: wrap;
-    padding: 0 1rem 1rem 1rem;
+    padding: 0.5rem 1rem 1rem 1rem;
 }
 
 .opciones button {
@@ -221,24 +169,25 @@ body {
     cursor: pointer;
     border-radius: 5px;
     font-weight: 600;
-    transition: background-color 0.3s;
 }
 
 .opciones button:hover {
     background-color: #e68a00;
 }
 
-/* ===================== FOOTER ===================== */
+/* FOOTER */
 .site-footer {
     background-color: #1a1a1a;
     color: #fff;
     padding: 1rem 2rem;
     margin-top: 2rem;
+    text-align: center;
 }
 
 .footer-nav ul {
     list-style: none;
     display: flex;
+    justify-content: center;
     gap: 1rem;
     margin-top: 0.5rem;
 }
@@ -252,8 +201,8 @@ body {
     color: #fff;
 }
 
-/* ===================== RESPONSIVE ===================== */
-@media (max-width: 1024px) {
+/* RESPONSIVE */
+@media(max-width: 1024px) {
     .layout {
         flex-direction: column;
     }
@@ -264,21 +213,21 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+@media(max-width: 480px) {
     .main-nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
+        display: none;
     }
 
-    .opciones {
-        flex-direction: column;
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        color: #fff;
     }
 
     .evento figure img {
-        height: 150px; /* menor altura en móvil */
-    }
-
-    .evento {
-        min-height: auto;
+        height: 140px;
     }
 }
