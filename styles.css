@@ -1,0 +1,284 @@
+/* ===================== RESET BÁSICO ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* ===================== HEADER ===================== */
+.site-header {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.site-header .brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ff9800;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #ff9800;
+}
+
+.search-login {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.search-login input[type="search"] {
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.btn.login {
+    background-color: #ff9800;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn.login:hover {
+    background-color: #e68a00;
+}
+
+/* ===================== LAYOUT PRINCIPAL ===================== */
+.layout {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* ===================== SIDEBAR ===================== */
+.sidebar {
+    flex: 1;
+    max-width: 250px;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    height: fit-content;
+}
+
+.sidebar h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.montos {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+.monto {
+    background-color: #ff9800;
+    color: #fff;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.monto:hover {
+    background-color: #e68a00;
+}
+
+.btn.apostar {
+    width: 100%;
+    margin-top: 0.5rem;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn.apostar:hover {
+    background-color: #43a047;
+}
+
+/* ===================== MAIN CONTENT ===================== */
+.main-content {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Categoría */
+.categoria-header h2 {
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    margin-bottom: 0.3rem;
+}
+
+.categoria-header .descripcion {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Evento card */
+.evento {
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    min-height: 360px; /* altura uniforme */
+}
+
+.evento:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.evento h3 {
+    font-size: 1.2rem;
+    color: #ff9800;
+    padding: 0 1rem;
+}
+
+.evento figure {
+    margin: 0;
+    position: relative;
+    flex: 1; /* ocupa el espacio disponible */
+    overflow: hidden;
+}
+
+.evento figure img {
+    width: 100%;
+    height: 200px; /* altura fija para uniformidad */
+    object-fit: cover; /* recorta y mantiene proporción */
+    transition: transform 0.3s;
+}
+
+.evento figure:hover img {
+    transform: scale(1.05);
+}
+
+.evento figcaption {
+    font-size: 0.85rem;
+    color: #555;
+    text-align: center;
+    padding: 0.3rem 0;
+}
+
+/* Opciones de apuesta */
+.opciones {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 0 1rem 1rem 1rem;
+}
+
+.opciones button {
+    flex: 1;
+    min-width: 60px;
+    background-color: #ff9800;
+    color: #fff;
+    border: none;
+    padding: 0.4rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.opciones button:hover {
+    background-color: #e68a00;
+}
+
+/* ===================== FOOTER ===================== */
+.site-footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+}
+
+.footer-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.footer-nav a {
+    color: #ff9800;
+    font-weight: 500;
+}
+
+.footer-nav a:hover {
+    color: #fff;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1024px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .opciones {
+        flex-direction: column;
+    }
+
+    .evento figure img {
+        height: 150px; /* menor altura en móvil */
+    }
+
+    .evento {
+        min-height: auto;
+    }
+}

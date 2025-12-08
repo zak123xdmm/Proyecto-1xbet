@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SportsBet • Plataforma Estudiantil</title>
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="description" content="SportsBet - plataforma académica para prácticas de desarrollo web. Apuestas y eventos deportivos." />
+</head>
+<body>
+    <!-- ================= HEADER ================= -->
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <h1 class="brand">SportsBet</h1>
+
+            <nav class="main-nav" role="navigation" aria-label="Menú principal">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-link">Inicio</a></li>
+                    <li><a href="#" class="nav-link">Partidos</a></li>
+                    <li><a href="#" class="nav-link">Mis apuestas</a></li>
+                    <li><a href="#" class="nav-link">Perfil</a></li>
+                </ul>
+            </nav>
+
+            <form class="search-login" role="search" aria-label="Buscador e inicio de sesión">
+                <label for="buscar" class="visually-hidden">Buscar eventos</label>
+                <input id="buscar" type="search" placeholder="Buscar eventos..." aria-label="Buscar eventos" />
+                <button type="button" class="btn login">Iniciar sesión</button>
+            </form>
+        </div>
+    </header>
+
+    <hr />
+
+    <!-- ================ LAYOUT PRINCIPAL ================ -->
+    <div class="layout">
+
+        <!-- ======== ASIDE: CUPÓN Y UTILIDADES ======== -->
+        <aside class="sidebar" role="complementary" aria-label="Panel lateral - Cupón y utilidades">
+            <section class="cupon" aria-labelledby="cupon-title">
+                <h2 id="cupon-title">Tu cupón</h2>
+                <p class="cupon-text">No has seleccionado apuestas todavía.</p>
+
+                <div class="montos" role="group" aria-label="Montos rápidos">
+                    <button type="button" class="monto">5 Bs</button>
+                    <button type="button" class="monto">10 Bs</button>
+                    <button type="button" class="monto">20 Bs</button>
+                </div>
+
+                <button type="button" class="btn apostar">Realizar Apuesta</button>
+            </section>
+
+            <section class="panel-info" aria-labelledby="panel-info-title">
+                <h2 id="panel-info-title">Accesos rápidos</h2>
+                <ul>
+                    <li><a href="#">Mis apuestas</a></li>
+                    <li><a href="#">Historial</a></li>
+                    <li><a href="#">Estadísticas</a></li>
+                </ul>
+            </section>
+
+            <section class="notas" aria-labelledby="notas-title">
+                <h2 id="notas-title">Notas</h2>
+                <p>Proyecto para prácticas de desarrollo web — 2do semestre.</p>
+            </section>
+        </aside>
+
+        <!-- ======== MAIN: SECCIONES DEPORTIVAS ======== -->
+        <main class="main-content" role="main">
+
+            <!-- SECCIÓN FÚTBOL -->
+            <section class="categoria" aria-labelledby="futbol-title">
+                <header class="categoria-header">
+                    <h2 id="futbol-title">Fútbol</h2>
+                    <p class="descripcion">Partidos destacados y cuotas rápidas.</p>
+                </header>
+
+                <article class="evento" aria-labelledby="e1-title">
+                    <h3 id="e1-title">Real Madrid vs Barcelona</h3>
+                    <figure>
+                        <img src="https://www.record.com.mx/sites/default/files/articulos/2025/10/25/real-madrid-vs-barcelona-donde-cuando-y-que-hora-ver-el-clasico-de-laliga-de-espana.webp" 
+                             alt="Partido Real Madrid contra Barcelona en LaLiga" width="230">
+                        <figcaption>El clásico español: alta rivalidad y expectación.</figcaption>
+                    </figure>
+                    <p class="detalle">Clásico nacional con historial y dramatismo en cada encuentro.</p>
+                    <div class="opciones" role="group" aria-label="Cuotas Real Madrid vs Barcelona">
+                        <button type="button">1 - 2.45</button>
+                        <button type="button">X - 3.20</button>
+                        <button type="button">2 - 2.80</button>
+                    </div>
+                </article>
+
+                <article class="evento" aria-labelledby="e2-title">
+                    <h3 id="e2-title">Arsenal vs Chelsea</h3>
+                    <figure>
+                        <img src="https://cdn-0001.qstv.on.epicgames.com/ERgZRYSIzxwpLKuYrp/image/landscape_comp.jpeg" 
+                             alt="Partido Arsenal vs Chelsea Premier League" width="230">
+                        <figcaption>Duelo londinense en la Premier League.</figcaption>
+                    </figure>
+                    <p class="detalle">Partido con tendencia ofensiva y goles frecuentes.</p>
+                    <div class="opciones" role="group" aria-label="Cuotas Arsenal vs Chelsea">
+                        <button type="button">1 - 2.10</button>
+                        <button type="button">X - 3.00</button>
+                        <button type="button">2 - 3.20</button>
+                    </div>
+                </article>
+            </section>
+
+            <hr />
+
+            <!-- SECCIÓN BALONCESTO -->
+            <section class="categoria" aria-labelledby="basket-title">
+                <header class="categoria-header">
+                    <h2 id="basket-title">Baloncesto</h2>
+                    <p class="descripcion">Encuentros destacados de la NBA y principales ligas.</p>
+                </header>
+
+                <article class="evento" aria-labelledby="b1-title">
+                    <h3 id="b1-title">Lakers vs Warriors</h3>
+                    <figure>
+                        <img src="https://artwork.espncdn.com/events/401469008/16x9/1280x720_20230130214107.jpg" 
+                             alt="Partido Lakers vs Warriors NBA" width="230">
+                        <figcaption>Partido entre dos plantillas de élite.</figcaption>
+                    </figure>
+                    <div class="opciones" role="group" aria-label="Cuotas Lakers vs Warriors">
+                        <button type="button">1 - 1.95</button>
+                        <button type="button">2 - 1.85</button>
+                    </div>
+                </article>
+
+                <article class="evento" aria-labelledby="b2-title">
+                    <h3 id="b2-title">Celtics vs Heat</h3>
+                    <figure>
+                        <img src="https://wp.clutchpoints.com/wp-content/uploads/2025/02/celtics-vs-heat-prediction-odds-pick-how-to-watch.jpg?w=1200" 
+                             alt="Partido Celtics vs Heat NBA" width="230">
+                        <figcaption>Rivalidad del Este con intensidad defensiva.</figcaption>
+                    </figure>
+                    <div class="opciones" role="group" aria-label="Cuotas Celtics vs Heat">
+                        <button type="button">1 - 1.70</button>
+                        <button type="button">2 - 2.20</button>
+                    </div>
+                </article>
+            </section>
+
+            <hr />
+
+            <!-- SECCIÓN TENIS -->
+            <section class="categoria" aria-labelledby="tenis-title">
+                <header class="categoria-header">
+                    <h2 id="tenis-title">Tenis</h2>
+                    <p class="descripcion">Encuentros individuales de máxima exigencia.</p>
+                </header>
+
+                <article class="evento" aria-labelledby="t1-title">
+                    <h3 id="t1-title">Djokovic vs Alcaraz</h3>
+                    <figure>
+                        <img src="https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg" 
+                             alt="Partido Djokovic vs Alcaraz" width="230">
+                        <figcaption>Choque entre experiencia y juventud.</figcaption>
+                    </figure>
+                    <div class="opciones" role="group" aria-label="Cuotas Djokovic vs Alcaraz">
+                        <button type="button">1 - 1.70</button>
+                        <button type="button">2 - 2.10</button>
+                    </div>
+                </article>
+
+                <article class="evento" aria-labelledby="t2-title">
+                    <h3 id="t2-title">Nadal vs Federer</h3>
+                    <figure>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrs6fJZX3efEOaCIV3M8kT1JTc8lCy8ZDxEg&s" 
+                             alt="Partido Nadal vs Federer" width="230">
+                        <figcaption>Encuentro que reúne técnica y legado.</figcaption>
+                    </figure>
+                    <div class="opciones" role="group" aria-label="Cuotas Nadal vs Federer">
+                        <button type="button">1 - 1.90</button>
+                        <button type="button">2 - 1.90</button>
+                    </div>
+                </article>
+            </section>
+
+            <hr />
+
+            <!-- SECCIÓN E-SPORTS -->
+            <section class="categoria" aria-labelledby="esports-title">
+                <header class="categoria-header">
+                    <h2 id="esports-title">E-Sports</h2>
+                    <p class="descripcion">Torneos y enfrentamientos profesionales de videojuegos.</p>
+                </header>
+
+                <article class="evento" aria-labelledby="e3-title">
+                    <h3 id="e3-title">G2 vs Liquid</h3>
+                    <figure>
+                        <img src="https://i.ytimg.com/vi/XkSlkhWATzM/maxresdefault.jpg" 
+                             alt="Partida G2 vs Liquid E-Sports" width="230">
+                        <figcaption>Partida decisiva en el circuito internacional.</figcaption>
+                    </figure>
+                    <div class="opciones" role="group" aria-label="Cuotas G2 vs Liquid">
+                        <button type="button">1 - 1.90</button>
+                        <button type="button">2 - 1.90</button>
+                    </div>
+                </article>
+
+                <article class="evento" aria-labelledby="e4-title">
+                    <h3 id="e4-title">Fnatic vs Cloud9</h3>
+                    <figure>
+                        <img src="https://i.ytimg.com/vi/RFbLbXBnE5g/hq720.jpg" 
+                             alt="Partida Fnatic vs Cloud9 E-Sports" width="230">
+                        <figcaption>Clásico de la escena competitiva de League of Legends.</figcaption>
+                    </figure>
+                    <div class="opciones" role="group" aria-label="Cuotas Fnatic vs Cloud9">
+                        <button type="button">1 - 2.10</button>
+                        <button type="button">2 - 1.80</button>
+                    </div>
+                </article>
+            </section>
+
+            <hr />
+
+            <!-- SECCIÓN BOXEO -->
+            <section class="categoria" aria-labelledby="boxeo-title">
+                <header class="categoria-header">
+                    <h2 id="boxeo-title">Boxeo</h2>
+                    <p class="descripcion">Combates profesionales y títulos en juego.</p>
+                </header>
+
+                <article class="evento" aria-labelledby="bx1-title">
+                    <h3 id="bx1-title">Canelo vs Benavidez</h3>
+                    <figure>
+                        <img src="https://i.ytimg.com/vi/-RjSgfz6Ix4/maxresdefault.jpg" 
+                             alt="Combate Canelo vs Benavidez" width="230">
+                        <figcaption>Combate de alto impacto en peso medio.</figcaption>
+                    </figure>
+                    <div class="opciones" role="group" aria-label="Cuotas Canelo vs Benavidez">
+                        <button type="button">1 - 1.60</button>
+                        <button type="button">2 - 2.40</button>
+                    </div>
+                </article>
+
+                <article class="evento" aria-labelledby="bx2-title">
+                    <h3 id="bx2-title">Fury vs Usyk</h3>
+                    <figure>
+                        <img src="https://images.pexels.com/photos/4761791/pexels-photo-4761791.jpeg" 
+                             alt="Combate Fury vs Usyk" width="230">
+                        <figcaption>Duelo entre dos pesos pesados top del planeta.</figcaption>
+                    </figure>
+                    <div class="opciones" role="group" aria-label="Cuotas Fury vs Usyk">
+                        <button type="button">1 - 2.00</button>
+                        <button type="button">2 - 1.90</button>
+                    </div>
+                </article>
+            </section>
+
+            <hr />
+
+            <!-- SECCIÓN NFL -->
+            <section class="categoria" aria-labelledby="nfl-title">
+                <header class="categoria-header">
+                    <h2 id="nfl-title">Fútbol Americano</h2>
+                    <p class="descripcion">Partidos destacados de la temporada.</p>
+                </header>
+
+                <article class="evento" aria-labelledby="nfl1-title">
+                    <h3 id="nfl1-title">Chiefs vs 49ers</h3>
+                    <figure>
+                        <img src="https://static.clubs.nfl.com/image/upload/t_landscape_tablet/49ers/ggiu6pu6cpmyi90ssdde.png" 
+                             alt="Partido Chiefs vs 49ers NFL" width="230">
+                        <figcaption>Enfrentamiento entre ofensivas potentes.</figcaption>
+                    </figure>
+                    <div class="opciones" role="group" aria-label="Cuotas Chiefs vs 49ers">
+                        <button type="button">1 - 1.80</button>
+                        <button type="button">2 - 2.10</button>
+                    </div>
+                </article>
+
+                <article class="evento" aria-labelledby="nfl2-title">
+                    <h3 id="nfl2-title">Cowboys vs Eagles</h3>
+                    <figure>
+                        <img src="https://www.365scores.com/es/news/wp-content/uploads/2025/09/portada-para-escudos-con-vivo-2025-09-02T085414.775.jpg" 
+                             alt="Partido Cowboys vs Eagles NFL" width="230">
+                        <figcaption>Rivalidad divisional con identidad táctica.</figcaption>
+                    </figure>
+                    <div class="opciones" role="group" aria-label="Cuotas Cowboys vs Eagles">
+                        <button type="button">1 - 2.00</button>
+                        <button type="button">2 - 1.85</button>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-inner">
+            <p>SportsBet 2025 — Proyecto académico (2do semestre)</p>
+            <nav class="footer-nav" aria-label="Enlaces de pie de página">
+                <ul>
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
