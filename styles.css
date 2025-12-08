@@ -1,37 +1,55 @@
-/* ===================== RESET BÁSICO ===================== */
+/* =========================================================
+   RESET GENERAL
+========================================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f6f8;
-    color: #222;
-    line-height: 1.6;
+:root {
+    --color-primary: #ff9800;
+    --color-primary-dark: #e68a00;
+    --color-bg: #f4f6f8;
+    --color-text: #222;
+    --color-dark: #1a1a1a;
+    --color-green: #4caf50;
+    --color-green-dark: #3e8f41;
+    --radius: 10px;
 }
 
-/* ===================== HEADER ===================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
 .site-header {
-    background-color: #1a1a1a;
+    background: var(--color-dark);
     color: #fff;
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
     gap: 1rem;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .brand {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
-    color: #ff9800;
+    color: var(--color-primary);
+    letter-spacing: 1px;
 }
 
-/* Menú hamburguesa */
+/* ----------------- Menú hamburguesa ----------------- */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -40,10 +58,10 @@ body {
 }
 
 .hamburger span {
-    width: 25px;
+    width: 26px;
     height: 3px;
     background: #fff;
-    transition: all 0.3s;
+    transition: 0.3s;
 }
 
 .hamburger.open span:nth-child(1) {
@@ -56,270 +74,298 @@ body {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Menú principal */
+/* ----------------- Navegación ----------------- */
 .main-nav {
     display: flex;
-    gap: 1.5rem;
+    align-items: center;
 }
 
 .main-nav ul {
-    display: flex;
     list-style: none;
+    display: flex;
     gap: 1.5rem;
 }
 
 .nav-link {
-    font-weight: 600;
-    color: #fff;
     text-decoration: none;
+    color: #fff;
+    font-weight: 600;
     transition: color 0.3s;
 }
 
-.nav-link:hover {
-    color: #ff9800;
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-primary);
 }
 
-/* Formulario búsqueda/login */
+/* ----------------- Zona de búsqueda y login ----------------- */
 .search-login {
     display: flex;
-    gap: 0.5rem;
     align-items: center;
+    gap: 0.6rem;
 }
 
 .search-login input[type="search"] {
-    padding: 0.4rem 0.6rem;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+    padding: 0.45rem 0.7rem;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    width: 180px;
+}
+
+.btn {
+    cursor: pointer;
+    border: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: 0.3s;
 }
 
 .btn.login {
-    background-color: #ff9800;
+    background: var(--color-primary);
     color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: background-color 0.3s;
+    padding: 0.55rem 1rem;
 }
 
 .btn.login:hover {
-    background-color: #e68a00;
+    background: var(--color-primary-dark);
 }
 
-/* ===================== LAYOUT PRINCIPAL ===================== */
+/* =========================================================
+   LAYOUT GENERAL
+========================================================= */
 .layout {
     display: flex;
     gap: 2rem;
     padding: 2rem;
 }
 
-/* ===================== SIDEBAR ===================== */
+/* =========================================================
+   SIDEBAR
+========================================================= */
 .sidebar {
-    flex: 1;
-    max-width: 250px;
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    width: 260px;
+    background: #fff;
+    padding: 1.2rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    position: sticky;
+    top: 90px;
     height: fit-content;
 }
 
 .sidebar h2 {
-    font-size: 1.2rem;
     margin-bottom: 0.5rem;
+    font-size: 1.25rem;
     color: #333;
 }
 
+.sidebar p,
+.sidebar li {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* --------------- Botones de montos --------------- */
 .montos {
     display: flex;
     gap: 0.5rem;
-    margin: 0.5rem 0;
+    margin: 0.8rem 0;
 }
 
 .monto {
-    background-color: #ff9800;
+    background: var(--color-primary);
     color: #fff;
+    padding: 0.45rem 0.8rem;
     border: none;
-    padding: 0.4rem 0.8rem;
-    cursor: pointer;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: background-color 0.3s;
-}
-
-.monto:hover {
-    background-color: #e68a00;
-}
-
-.btn.apostar {
-    width: 100%;
-    margin-top: 0.5rem;
-    background-color: #4caf50;
-    color: #fff;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
     border-radius: 5px;
-    font-weight: 600;
-    transition: background-color 0.3s;
+    transition: 0.25s;
+}
+
+.monto:hover,
+.monto.active {
+    background: var(--color-primary-dark);
+}
+
+/* --------------- Botón apostar --------------- */
+.btn.apostar {
+    background: var(--color-green);
+    width: 100%;
+    padding: 0.6rem;
+    color: #fff;
+    font-size: 1rem;
+    margin-top: 0.8rem;
 }
 
 .btn.apostar:hover {
-    background-color: #43a047;
+    background: var(--color-green-dark);
 }
 
-/* ===================== MAIN CONTENT ===================== */
+/* =========================================================
+   MAIN CONTENT: EVENTOS
+========================================================= */
 .main-content {
-    flex: 3;
+    flex: 1;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     gap: 2rem;
 }
 
-/* Evento card */
+/* --------------- Tarjetas de eventos --------------- */
 .evento {
-    background-color: #fff;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
+    background: #fff;
+    border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: 0.3s;
 }
 
 .evento:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
 }
 
 .evento h3 {
-    font-size: 1.2rem;
-    color: #ff9800;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1rem;
+    font-size: 1.25rem;
+    color: var(--color-primary);
 }
 
 .evento figure {
-    margin: 0;
-    overflow: hidden;
+    position: relative;
 }
 
 .evento figure img {
     width: 100%;
-    height: 160px;
+    height: 170px;
     object-fit: cover;
-    transition: transform 0.3s;
+    transition: transform 0.4s;
 }
 
-.evento figure:hover img {
-    transform: scale(1.05);
+.evento:hover figure img {
+    transform: scale(1.07);
 }
 
 .evento figcaption {
-    font-size: 0.85rem;
-    color: #555;
     text-align: center;
-    padding: 0.3rem 0;
+    padding: 0.4rem 0;
+    font-size: 0.85rem;
+    color: #666;
 }
 
-/* Opciones de apuesta */
+/* --------------- Botones de cuotas --------------- */
 .opciones {
+    padding: 0.8rem 1rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
+    gap: 0.6rem;
 }
 
 .opciones button {
     flex: 1;
-    min-width: 60px;
-    background-color: #ff9800;
+    min-width: 70px;
+    padding: 0.45rem;
+    background: var(--color-primary);
+    border-radius: 6px;
     color: #fff;
+    font-weight: 700;
     border: none;
-    padding: 0.4rem;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: 600;
-    transition: background-color 0.3s;
+    transition: 0.25s;
 }
 
-.opciones button:hover {
-    background-color: #e68a00;
+.opciones button:hover,
+.opciones button.active {
+    background: var(--color-primary-dark);
 }
 
-/* ===================== FOOTER ===================== */
+/* =========================================================
+   FOOTER
+========================================================= */
 .site-footer {
-    background-color: #1a1a1a;
+    background: var(--color-dark);
     color: #fff;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     margin-top: 2rem;
+    text-align: center;
 }
 
 .footer-nav ul {
     list-style: none;
     display: flex;
-    gap: 1rem;
-    margin-top: 0.5rem;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 0.8rem;
 }
 
 .footer-nav a {
-    color: #ff9800;
+    color: var(--color-primary);
     font-weight: 500;
     text-decoration: none;
+    transition: 0.25s;
 }
 
 .footer-nav a:hover {
     color: #fff;
 }
 
-/* ===================== RESPONSIVE ===================== */
-@media (max-width: 1024px) {
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+/* Tablet */
+@media (max-width: 992px) {
     .layout {
         flex-direction: column;
     }
 
     .sidebar {
-        max-width: 100%;
-        margin-bottom: 2rem;
-    }
-
-    .main-content {
-        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        position: static;
     }
 }
 
+/* Móvil */
 @media (max-width: 768px) {
+    /* Mostrar hamburguesa */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Ocultar menú normal */
     .main-nav {
         display: none;
-        flex-direction: column;
-        background-color: #1a1a1a;
-        position: absolute;
-        top: 100%;
-        left: 0;
         width: 100%;
+        background: #111;
+        position: absolute;
+        top: 70px;
+        left: 0;
         padding: 1rem 2rem;
+        flex-direction: column;
+        gap: 1rem;
+        border-bottom: 3px solid var(--color-primary);
     }
 
     .main-nav.nav-active {
         display: flex;
     }
 
-    .hamburger {
-        display: flex;
+    .main-nav ul {
+        flex-direction: column;
+        gap: 1rem;
     }
 
-    .main-content {
-        grid-template-columns: 1fr;
+    .search-login input {
+        width: 140px;
     }
 }
 
+/* Teléfonos pequeños */
 @media (max-width: 480px) {
     .evento figure img {
-        height: 140px;
+        height: 150px;
     }
 
-    .opciones button {
-        font-size: 0.85rem;
-        padding: 0.35rem;
+    .search-login {
+        width: 100%;
+        justify-content: space-between;
     }
 }
