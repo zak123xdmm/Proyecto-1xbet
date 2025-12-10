@@ -8,18 +8,19 @@
 }
 
 :root {
-    --color-primary: #ff9800;
+    --color-primary: #ff9800; /* Naranja/Ámbar */
     --color-primary-dark: #e68a00;
     --color-bg: #f4f6f8;
     --color-text: #222;
     --color-dark: #1a1a1a;
     --color-green: #4caf50;
     --color-green-dark: #3e8f41;
+    --color-danger: #f44336; /* Rojo para remover */
     --radius: 10px;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Usamos una fuente más moderna */
     background: var(--color-bg);
     color: var(--color-text);
     line-height: 1.6;
@@ -91,6 +92,7 @@ body {
     color: #fff;
     font-weight: 600;
     transition: color 0.3s;
+    padding: 0.5rem 0; /* Para mejor área de clic */
 }
 
 .nav-link:hover,
@@ -105,7 +107,8 @@ body {
     gap: 0.6rem;
 }
 
-.search-login input[type="search"] {
+.search-login input[type="search"],
+.input-monto {
     padding: 0.45rem 0.7rem;
     border-radius: 5px;
     border: 1px solid #aaa;
@@ -139,8 +142,50 @@ body {
     padding: 2rem;
 }
 
+/* Estilos específicos para la página de inicio/bienvenida */
+.layout.inicio {
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+.bienvenida {
+    padding: 3rem;
+    text-align: center;
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    margin-bottom: 2rem;
+}
+
+.bienvenida h1 {
+    color: var(--color-primary);
+    margin-bottom: 0.8rem;
+}
+
+.tutorial {
+    padding: 2rem;
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.tutorial h2 {
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+}
+
+.tutorial ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.tutorial li {
+    margin-bottom: 0.5rem;
+}
+
 /* =========================================================
-   SIDEBAR
+   SIDEBAR (CUPÓN)
 ========================================================= */
 .sidebar {
     width: 260px;
@@ -157,6 +202,12 @@ body {
     margin-bottom: 0.5rem;
     font-size: 1.25rem;
     color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.sidebar section:not(:last-child) {
+    margin-bottom: 1.5rem;
 }
 
 .sidebar p,
@@ -165,11 +216,49 @@ body {
     color: #555;
 }
 
+/* --------------- Apuestas en el Cupón --------------- */
+#lista-apuestas {
+    margin-top: 0.5rem;
+}
+
+.apuesta-item {
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.apuesta-item hr {
+    border: none;
+    border-top: 1px dashed #ddd;
+    margin-top: 0.5rem;
+}
+
+.remover-apuesta {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    background: var(--color-danger);
+    color: white;
+    border: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: 0.2s;
+    line-height: 1;
+    padding: 0;
+}
+
+.remover-apuesta:hover {
+    background: #c62828;
+}
+
 /* --------------- Botones de montos --------------- */
 .montos {
     display: flex;
     gap: 0.5rem;
     margin: 0.8rem 0;
+    flex-wrap: wrap; /* Mejor para móvil */
 }
 
 .monto {
@@ -179,11 +268,20 @@ body {
     border: none;
     border-radius: 5px;
     transition: 0.25s;
+    flex: 1;
+    min-width: 60px;
 }
 
 .monto:hover,
 .monto.active {
     background: var(--color-primary-dark);
+    box-shadow: 0 0 5px rgba(255, 152, 0, 0.5);
+}
+
+.input-monto {
+    width: 100%;
+    margin-top: 0.5rem;
+    text-align: center;
 }
 
 /* --------------- Botón apostar --------------- */
@@ -194,6 +292,9 @@ body {
     color: #fff;
     font-size: 1rem;
     margin-top: 0.8rem;
+    text-align: center;
+    display: block;
+    text-decoration: none;
 }
 
 .btn.apostar:hover {
@@ -217,6 +318,8 @@ body {
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     transition: 0.3s;
+    display: flex;
+    flex-direction: column; /* Para asegurar que el contenido ocupe todo el espacio */
 }
 
 .evento:hover {
@@ -232,6 +335,7 @@ body {
 
 .evento figure {
     position: relative;
+    flex-shrink: 0;
 }
 
 .evento figure img {
@@ -258,6 +362,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
+    margin-top: auto; /* Empuja las opciones al final de la tarjeta */
 }
 
 .opciones button {
@@ -270,11 +375,57 @@ body {
     font-weight: 700;
     border: none;
     transition: 0.25s;
+    cursor: pointer;
 }
 
-.opciones button:hover,
-.opciones button.active {
+.opciones button:hover {
     background: var(--color-primary-dark);
+}
+
+.opciones button.active {
+    background: var(--color-green); /* Destacar selección en verde */
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.7);
+}
+
+
+/* =========================================================
+   LISTA DE BOLETOS (MIS APUESTAS)
+========================================================= */
+
+.lista-boletos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.boleto {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    border-left: 5px solid var(--color-primary);
+}
+
+.boleto h3 {
+    color: var(--color-dark);
+    margin-bottom: 0.5rem;
+}
+
+.boleto h4 {
+    margin-top: 1rem;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.3rem;
+}
+
+.boleto ul {
+    list-style: none;
+    padding: 0.5rem 0;
+}
+
+.boleto li {
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
 }
 
 /* =========================================================
@@ -320,6 +471,7 @@ body {
     .sidebar {
         width: 100%;
         position: static;
+        order: -1; /* Mover el cupón arriba en móvil */
     }
 }
 
@@ -351,10 +503,15 @@ body {
     .main-nav ul {
         flex-direction: column;
         gap: 1rem;
+        width: 100%;
     }
 
-    .search-login input {
-        width: 140px;
+    .search-login {
+        display: none; /* Ocultar en móvil para simplificar */
+    }
+
+    .site-header {
+        padding: 1rem;
     }
 }
 
@@ -362,10 +519,5 @@ body {
 @media (max-width: 480px) {
     .evento figure img {
         height: 150px;
-    }
-
-    .search-login {
-        width: 100%;
-        justify-content: space-between;
     }
 }
