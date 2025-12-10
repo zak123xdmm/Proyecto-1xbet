@@ -320,12 +320,13 @@ a:hover {
 }
 
 /* =========================================================
-   MAIN CONTENT: EVENTOS (partidos.html)
+   MAIN CONTENT: EVENTOS (partidos.html) - MODIFICADO
 ========================================================= */
 .main-content {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* Asegura 3 columnas */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 1.5rem;
 }
 
@@ -343,12 +344,15 @@ a:hover {
 /* --------------- Tarjetas de eventos --------------- */
 .evento {
     background: #fff;
-    border-radius: var(--radius);
+    /* Redondeo de esquinas como en un boleto */
+    border-radius: 12px; 
     overflow: hidden;
     box-shadow: var(--shadow-light);
     transition: 0.3s;
     display: flex;
     flex-direction: column;
+    /* Borde lateral mas grueso para estilo de boleto */
+    border-left: 6px solid var(--color-primary); 
 }
 
 .evento:hover {
@@ -362,6 +366,8 @@ a:hover {
     color: var(--color-dark);
     font-weight: 700;
     text-align: center;
+    /* Nuevo: Separación clara del contenido */
+    border-bottom: 1px solid #f0f0f0; 
 }
 
 .evento figure {
@@ -382,7 +388,7 @@ a:hover {
     padding: 0 10px 5px 0;
 }
 
-/* --------------- Botones de cuotas --------------- */
+/* --------------- Botones de cuotas - MODIFICADO --------------- */
 .opciones {
     padding: 1rem;
     display: flex;
@@ -395,27 +401,41 @@ a:hover {
     flex: 1;
     min-width: 70px;
     padding: 0.8rem;
-    background: #f0f0f0;
-    border-radius: 6px;
+    background: var(--color-bg); /* Fondo más claro */
+    border-radius: 8px; /* Redondeo más pronunciado */
     color: var(--color-dark);
     font-weight: 700;
     border: 1px solid #ccc;
     transition: 0.25s;
     font-size: 1rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    /* Texto de cuota: más pequeño para diferenciar */
+    line-height: 1.2; 
+}
+
+.cuota span.label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #555;
+    margin-bottom: 0.2rem;
 }
 
 .cuota:hover {
     background: #ddd;
-    border-color: #bbb;
+    border-color: var(--color-primary); /* Resaltar borde con naranja */
 }
 
 .cuota.active {
     background: var(--color-primary);
-    color: var(--color-dark); /* Color de texto oscuro para que se lea mejor en el naranja */
+    color: white; /* Texto blanco en el botón activo */
     border: 2px solid var(--color-primary-dark);
     transform: translateY(-2px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cuota.active span.label {
+    color: rgba(255, 255, 255, 0.8); /* Etiqueta más clara en botón activo */
 }
 
 

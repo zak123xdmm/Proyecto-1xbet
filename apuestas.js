@@ -63,7 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function handleSeleccionarCuota(event) {
-            const boton = event.target;
+            // MODIFICADO: Usar closest para asegurar que 'boton' es el elemento con la clase .cuota, 
+            // incluso si se hizo clic en el <span> interno.
+            const boton = event.target.closest('.cuota'); 
+            if (!boton) return;
+            
             const eventoNombre = boton.getAttribute('data-evento');
             // Creamos un ID único para esta selección: NombreEvento-Seleccion
             const seleccionKey = boton.getAttribute('data-seleccion'); 
@@ -72,12 +76,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const cuota = parseFloat(boton.getAttribute('data-cuota'));
 
             // 1. Desactivar y eliminar cualquier otra selección para el MISMO evento
+            // Nota: Aquí se usa el eventoNombre, no el eventoId, para deseleccionar a los hermanos.
             document.querySelectorAll(`.cuota[data-evento="${eventoNombre}"].active`).forEach(btn => {
                 btn.classList.remove('active');
             });
             
             // Filtra y elimina cualquier apuesta anterior para este evento
-            apuestasSeleccionadas = apuestasSeleccionadas.filter(ap => ap.evento.split('-')[0] !== eventoNombre);
+            apuestasSeleccionadas = apuestasSeleccionadas.filter(ap => ap.evento !== eventoNombre);
 
             // 2. Agregar la nueva cuota y activar el botón
             boton.classList.add('active');
