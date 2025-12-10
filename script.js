@@ -11,7 +11,7 @@ const logoutBtn = document.getElementById('logout-btn');
 
 const SALDO_INICIAL = 1000.00;
 
-// Función JWT Decode (DEBE SER ACCESIBLE)
+// Función JWT Decode (DEBE SER ACCESIBLE de forma global para la demostración)
 window.jwt_decode = function(token) {
     try {
         const base64Url = token.split('.')[1];
@@ -55,12 +55,13 @@ function handleLogout() {
     localStorage.removeItem("logged_in");
     
     // Forzar el logout del SDK de Google 
+    // Nota: GIS no tiene una función de logout simple, pero deshabilita la selección automática
     if (typeof google !== 'undefined' && google.accounts.id) {
         google.accounts.id.disableAutoSelect();
     }
 
     renderProfile();
-    // Recargar la página de perfil para limpiar
+    // Recargar la página de perfil para limpiar la UI después del logout
     if (window.location.pathname.includes('perfil.html')) {
         window.location.reload();
     }
@@ -80,9 +81,11 @@ window.renderProfile = function() {
     if (perfilSaldo) perfilSaldo.textContent = userSaldo.toFixed(2);
 
     if (googleLoginContainer) {
+        // En perfil.html, ocultamos el botón de login si ya está logueado
         googleLoginContainer.style.display = isLoggedIn ? 'none' : 'block';
     }
     if (logoutBtn) {
+        // Mostramos el botón de logout si está logueado
         logoutBtn.style.display = isLoggedIn ? 'block' : 'none';
     }
 };
