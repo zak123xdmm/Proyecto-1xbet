@@ -1,5 +1,5 @@
 /* =========================================================
-   RESET GENERAL
+   RESET GENERAL Y VARIABLES (COLORES ORIGINALES MANTENIDOS)
 ========================================================= */
 * {
     margin: 0;
@@ -8,27 +8,64 @@
 }
 
 :root {
-    --color-primary: #ff9800; /* Naranja/Ámbar */
-    --color-primary-dark: #e68a00;
-    --color-bg: #f4f6f8;
-    --color-text: #222;
-    --color-dark: #1a1a1a;
-    --color-green: #4caf50;
-    --color-green-dark: #3e8f41;
-    --color-danger: #f44336; /* Rojo para remover */
-    --radius: 10px;
+    /* Colores originales */
+    --color-primary: #ff9800;          /* Naranja brillante (Apuestas/Acción) */
+    --color-primary-dark: #e68a00;     /* Naranja oscuro para hover */
+    --color-bg: #f4f6f8;               /* Fondo gris muy claro */
+    --color-text: #222;                /* Texto oscuro */
+    --color-dark: #1a1a1a;             /* Fondo de Header/Footer (Negro/Gris Oscuro) */
+    --color-green: #4caf50;            /* Verde éxito/ganancia */
+    --color-green-dark: #3e8f41;       
+    --color-red: #E74C3C;              /* Rojo para errores/cerrar */
+
+    /* Tipografía y Border */
+    --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --radius: 10px; /* Radio original */
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08); /* Añadida Sombra */
+    --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.15); /* Añadida Sombra para hover */
 }
 
 body {
-    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Usamos una fuente más moderna */
+    font-family: var(--font-stack);
     background: var(--color-bg);
     color: var(--color-text);
     line-height: 1.6;
     overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+main {
+    flex-grow: 1; /* Para empujar el footer hacia abajo */
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: color 0.2s;
+}
+a:hover {
+    color: var(--color-primary-dark);
+}
+
+/* Estilo general para botones */
+.btn {
+    cursor: pointer;
+    border: none;
+    font-weight: 600;
+    border-radius: 6px; /* Ligeramente más pequeño que --radius para botones */
+    transition: background-color 0.3s, transform 0.1s;
+    text-align: center;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+
 /* =========================================================
-   HEADER
+   HEADER & NAVEGACIÓN
 ========================================================= */
 .site-header {
     background: var(--color-dark);
@@ -41,58 +78,67 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .brand {
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: 700;
     color: var(--color-primary);
-    letter-spacing: 1px;
 }
 
-/* ----------------- Menú hamburguesa ----------------- */
+/* ----------------- Menú hamburguesa (Mejorado) ----------------- */
 .hamburger {
-    display: none;
+    display: none; /* Oculto por defecto en desktop */
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
+    padding: 5px;
 }
 
 .hamburger span {
-    width: 26px;
+    width: 28px;
     height: 3px;
     background: #fff;
     transition: 0.3s;
 }
 
-.hamburger.open span:nth-child(1) {
+.hamburger.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
-.hamburger.open span:nth-child(2) {
+.hamburger.active span:nth-child(2) {
     opacity: 0;
 }
-.hamburger.open span:nth-child(3) {
+.hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* ----------------- Navegación ----------------- */
-.main-nav {
-    display: flex;
-    align-items: center;
-}
-
+/* ----------------- Navegación (Mejorada) ----------------- */
 .main-nav ul {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 1.8rem;
 }
 
 .nav-link {
-    text-decoration: none;
     color: #fff;
     font-weight: 600;
+    font-size: 1rem;
+    padding: 0.2rem 0;
+    position: relative;
     transition: color 0.3s;
-    padding: 0.5rem 0; /* Para mejor área de clic */
+}
+
+/* Indicador de página activa/hover (Nuevo) */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--color-primary);
+    transition: width 0.3s;
 }
 
 .nav-link:hover,
@@ -100,201 +146,173 @@ body {
     color: var(--color-primary);
 }
 
+.nav-link.active::after {
+    width: 100%;
+}
+
 /* ----------------- Zona de búsqueda y login ----------------- */
 .search-login {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 1rem;
 }
 
-.search-login input[type="search"],
-.input-monto {
-    padding: 0.45rem 0.7rem;
-    border-radius: 5px;
-    border: 1px solid #aaa;
-    width: 180px;
-}
-
-.btn {
-    cursor: pointer;
-    border: none;
-    font-weight: 600;
-    border-radius: 5px;
-    transition: 0.3s;
+.search-login input[type="search"] {
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 200px;
+    background-color: #f0f0f0;
+    color: var(--color-text);
 }
 
 .btn.login {
     background: var(--color-primary);
-    color: #fff;
-    padding: 0.55rem 1rem;
+    color: var(--color-dark);
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border: 1px solid var(--color-primary);
 }
 
 .btn.login:hover {
     background: var(--color-primary-dark);
+    color: white;
 }
 
 /* =========================================================
-   LAYOUT GENERAL
+   LAYOUT PRINCIPAL (partidos.html)
 ========================================================= */
 .layout {
     display: flex;
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
     gap: 2rem;
-    padding: 2rem;
-}
-
-/* Estilos específicos para la página de inicio/bienvenida */
-.layout.inicio {
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-direction: column;
-}
-
-.bienvenida {
-    padding: 3rem;
-    text-align: center;
-    background: #fff;
-    border-radius: var(--radius);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
-    margin-bottom: 2rem;
-}
-
-.bienvenida h1 {
-    color: var(--color-primary);
-    margin-bottom: 0.8rem;
-}
-
-.tutorial {
-    padding: 2rem;
-    background: #fff;
-    border-radius: var(--radius);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
-}
-
-.tutorial h2 {
-    color: var(--color-dark);
-    margin-bottom: 1rem;
-}
-
-.tutorial ol {
-    margin-left: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.tutorial li {
-    margin-bottom: 0.5rem;
 }
 
 /* =========================================================
-   SIDEBAR (CUPÓN)
+   SIDEBAR / CUPÓN (partidos.html)
 ========================================================= */
 .sidebar {
-    width: 260px;
+    width: 300px; /* Ancho ajustado */
+    flex-shrink: 0;
     background: #fff;
-    padding: 1.2rem;
+    padding: 1.5rem;
     border-radius: var(--radius);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    box-shadow: var(--shadow-light); /* Añadida Sombra */
     position: sticky;
     top: 90px;
     height: fit-content;
 }
 
 .sidebar h2 {
-    margin-bottom: 0.5rem;
-    font-size: 1.25rem;
-    color: #333;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--color-dark);
+    border-bottom: 2px solid var(--color-primary);
     padding-bottom: 0.5rem;
+    font-weight: 700;
 }
 
-.sidebar section:not(:last-child) {
-    margin-bottom: 1.5rem;
+/* Estilos específicos para la lista del cupón */
+#texto-vacio {
+    color: #777;
+    font-style: italic;
+    padding: 1rem 0;
 }
 
-.sidebar p,
-.sidebar li {
-    font-size: 0.95rem;
-    color: #555;
-}
-
-/* --------------- Apuestas en el Cupón --------------- */
 #lista-apuestas {
-    margin-top: 0.5rem;
+    margin: 1rem 0;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
 }
 
 .apuesta-item {
-    padding: 0.5rem 0;
+    background: #fcfcfc;
+    padding: 0.7rem 1rem;
+    border-left: 5px solid var(--color-primary); /* Resalta la apuesta */
+    margin-bottom: 0.8rem;
     position: relative;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.apuesta-item hr {
-    border: none;
-    border-top: 1px dashed #ddd;
-    margin-top: 0.5rem;
+.apuesta-item p {
+    margin: 0.1rem 0;
+}
+.apuesta-item p:first-child {
+    font-weight: 600;
+    color: var(--color-dark);
 }
 
-.remover-apuesta {
+.apuesta-cerrar {
     position: absolute;
-    top: 5px;
-    right: 0;
-    background: var(--color-danger);
-    color: white;
-    border: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    font-size: 0.7rem;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
     cursor: pointer;
-    transition: 0.2s;
-    line-height: 1;
-    padding: 0;
+    font-size: 1.1rem;
+    opacity: 0.7;
+    color: var(--color-red);
+    transition: opacity 0.2s;
 }
-
-.remover-apuesta:hover {
-    background: #c62828;
+.apuesta-cerrar:hover {
+    opacity: 1;
 }
 
 /* --------------- Botones de montos --------------- */
 .montos {
     display: flex;
-    gap: 0.5rem;
-    margin: 0.8rem 0;
-    flex-wrap: wrap; /* Mejor para móvil */
+    gap: 0.8rem;
+    margin: 1rem 0;
 }
 
 .monto {
-    background: var(--color-primary);
-    color: #fff;
-    padding: 0.45rem 0.8rem;
-    border: none;
-    border-radius: 5px;
-    transition: 0.25s;
     flex: 1;
-    min-width: 60px;
+    background: #eee;
+    color: var(--color-text);
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ccc;
+    font-weight: 600;
+    border-radius: 4px;
 }
 
-.monto:hover,
-.monto.active {
-    background: var(--color-primary-dark);
-    box-shadow: 0 0 5px rgba(255, 152, 0, 0.5);
+.monto:hover {
+    background: #ddd;
 }
 
-.input-monto {
+/* Input de monto personalizado */
+#monto-personalizado {
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    border: 1px solid #aaa;
     width: 100%;
     margin-top: 0.5rem;
-    text-align: center;
+    font-size: 1rem;
+}
+
+/* Información de Monto y Ganancia */
+.sidebar p {
+    font-size: 1rem;
+    margin-top: 0.8rem;
+}
+
+#ganancia {
+    color: var(--color-green);
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
 /* --------------- Botón apostar --------------- */
 .btn.apostar {
     background: var(--color-green);
     width: 100%;
-    padding: 0.6rem;
-    color: #fff;
-    font-size: 1rem;
-    margin-top: 0.8rem;
-    text-align: center;
-    display: block;
-    text-decoration: none;
+    padding: 1rem;
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    border-radius: var(--radius);
 }
 
 .btn.apostar:hover {
@@ -302,13 +320,24 @@ body {
 }
 
 /* =========================================================
-   MAIN CONTENT: EVENTOS
+   MAIN CONTENT: EVENTOS (partidos.html)
 ========================================================= */
 .main-content {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* Títulos de sección */
+.main-content h2 {
+    grid-column: 1 / -1;
+    font-size: 2rem;
+    color: var(--color-dark);
+    border-bottom: 3px solid var(--color-primary);
+    padding-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    font-weight: 700;
 }
 
 /* --------------- Tarjetas de eventos --------------- */
@@ -316,153 +345,412 @@ body {
     background: #fff;
     border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    box-shadow: var(--shadow-light);
     transition: 0.3s;
     display: flex;
-    flex-direction: column; /* Para asegurar que el contenido ocupe todo el espacio */
+    flex-direction: column;
 }
 
 .evento:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
 }
 
 .evento h3 {
-    padding: 0.7rem 1rem;
-    font-size: 1.25rem;
-    color: var(--color-primary);
+    padding: 1rem;
+    font-size: 1.2rem;
+    color: var(--color-dark);
+    font-weight: 700;
+    text-align: center;
 }
 
 .evento figure {
-    position: relative;
-    flex-shrink: 0;
+    margin: 0;
+    flex-grow: 1;
 }
 
 .evento figure img {
     width: 100%;
-    height: 170px;
+    height: 160px;
     object-fit: cover;
-    transition: transform 0.4s;
+    display: block;
 }
-
-.evento:hover figure img {
-    transform: scale(1.07);
-}
-
-.evento figcaption {
-    text-align: center;
-    padding: 0.4rem 0;
-    font-size: 0.85rem;
-    color: #666;
+.evento figure figcaption {
+    font-size: 0.8rem;
+    text-align: right;
+    color: #888;
+    padding: 0 10px 5px 0;
 }
 
 /* --------------- Botones de cuotas --------------- */
 .opciones {
-    padding: 0.8rem 1rem;
+    padding: 1rem;
     display: flex;
-    flex-wrap: wrap;
     gap: 0.6rem;
-    margin-top: auto; /* Empuja las opciones al final de la tarjeta */
+    margin-top: auto;
+    border-top: 1px solid #f0f0f0;
 }
 
-.opciones button {
+.cuota {
     flex: 1;
     min-width: 70px;
-    padding: 0.45rem;
-    background: var(--color-primary);
+    padding: 0.8rem;
+    background: #f0f0f0;
     border-radius: 6px;
-    color: #fff;
+    color: var(--color-dark);
     font-weight: 700;
-    border: none;
+    border: 1px solid #ccc;
     transition: 0.25s;
-    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.opciones button:hover {
-    background: var(--color-primary-dark);
+.cuota:hover {
+    background: #ddd;
+    border-color: #bbb;
 }
 
-.opciones button.active {
-    background: var(--color-green); /* Destacar selección en verde */
-    box-shadow: 0 0 8px rgba(76, 175, 80, 0.7);
+.cuota.active {
+    background: var(--color-primary);
+    color: var(--color-dark); /* Color de texto oscuro para que se lea mejor en el naranja */
+    border: 2px solid var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 
 /* =========================================================
-   LISTA DE BOLETOS (MIS APUESTAS)
+   MIS APUESTAS (mis-apuestas.html)
 ========================================================= */
-
 .lista-boletos {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    margin-top: 2rem;
 }
 
 .boleto {
     background: #fff;
     padding: 1.5rem;
     border-radius: var(--radius);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
-    border-left: 5px solid var(--color-primary);
+    box-shadow: var(--shadow-light);
+    border-left: 5px solid var(--color-dark); /* Borde de color oscuro */
 }
 
 .boleto h3 {
     color: var(--color-dark);
-    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
 }
 
 .boleto h4 {
-    margin-top: 1rem;
-    color: #555;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.3rem;
+    color: var(--color-primary-dark);
+    font-size: 1.1rem;
 }
 
 .boleto ul {
     list-style: none;
-    padding: 0.5rem 0;
+    padding-left: 0;
+    margin-top: 0.5rem;
+    border-top: 1px dashed #ddd;
+    padding-top: 0.5rem;
 }
 
 .boleto li {
-    margin-bottom: 0.3rem;
+    padding: 5px 0;
     font-size: 0.9rem;
+    color: #555;
+    border-bottom: 1px dotted #ccc;
 }
+.boleto li:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   PERFIL (perfil.html)
+========================================================= */
+/* El estilo se aplica a la sección dentro de main */
+#perfil-page main > div {
+    background:#fff; 
+    padding: 2rem; 
+    border-radius: var(--radius); 
+    box-shadow: var(--shadow-light);
+}
+#perfil-page h1 {
+    font-size: 2rem;
+    color: var(--color-dark);
+    margin-bottom: 1.5rem;
+}
+
+/* =========================================================
+   INICIO (inicio.html) - Estilos para las nuevas secciones
+========================================================= */
+.inicio-layout {
+    display: block; 
+    max-width: 1200px;
+    padding: 0 2rem;
+}
+
+/* --- HERO BANNER --- */
+.hero-banner {
+    display: flex;
+    align-items: center;
+    background: var(--color-dark);
+    color: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 3rem;
+    min-height: 400px;
+}
+
+.hero-content {
+    flex: 1;
+    padding: 3rem;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero-image {
+    flex: 1;
+    height: 400px;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-content .btn.apostar {
+    width: auto;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+
+/* --- CATEGORÍAS DESTACADAS --- */
+.featured-categories {
+    margin-bottom: 3rem;
+}
+
+.featured-categories h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-dark);
+    border-bottom: 3px solid var(--color-primary);
+    padding-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.category-card {
+    display: block;
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    transition: 0.3s;
+    text-align: center;
+    color: var(--color-text);
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    color: var(--color-dark);
+}
+
+.category-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+}
+
+.category-card h3 {
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+    color: var(--color-dark);
+}
+
+.category-card p {
+    font-size: 0.9rem;
+    padding-bottom: 1rem;
+    color: #777;
+}
+
+/* --- TUTORIAL & BENEFICIOS --- */
+.tutorial-and-benefits {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.tutorial-box, .benefits-box {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-light);
+}
+
+.tutorial-box h2, .benefits-box h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-dark);
+}
+
+.tutorial-box ol, .benefits-box ul {
+    padding-left: 1.5rem;
+}
+
+.tutorial-box li, .benefits-box li {
+    margin-bottom: 0.7rem;
+    font-size: 1.05rem;
+}
+
+.benefits-box ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.benefits-box li::before {
+    content: "✅"; /* Nuevo emoji más profesional que la viñeta */
+    margin-right: 0.5rem;
+    color: var(--color-green);
+}
+
+/* --- NOTICIAS --- */
+.latest-news h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-dark);
+    border-bottom: 3px solid var(--color-primary);
+    padding-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.news-card {
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.news-card h3 {
+    padding: 1rem 1rem 0.5rem 1rem;
+    font-size: 1.3rem;
+    color: var(--color-dark);
+}
+
+.news-card p {
+    padding: 0 1rem 1rem 1rem;
+    flex-grow: 1;
+}
+
+.news-card a {
+    display: block;
+    text-align: right;
+    padding: 0 1rem 1rem 1rem;
+    font-weight: 600;
+}
+
 
 /* =========================================================
    FOOTER
 ========================================================= */
 .site-footer {
     background: var(--color-dark);
-    color: #fff;
+    color: #aaa;
     padding: 1.5rem 2rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
     text-align: center;
+    font-size: 0.9rem;
+}
+
+.site-footer p {
+    margin-bottom: 0.5rem;
 }
 
 .footer-nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 1.2rem;
-    margin-top: 0.8rem;
+    gap: 1.5rem;
 }
 
 .footer-nav a {
-    color: var(--color-primary);
-    font-weight: 500;
-    text-decoration: none;
-    transition: 0.25s;
+    color: #aaa;
+    transition: color 0.3s;
 }
 
 .footer-nav a:hover {
-    color: #fff;
+    color: var(--color-primary);
 }
 
+
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE (Ajustes de Media Queries)
 ========================================================= */
 
-/* Tablet */
+/* Tablet y pantallas medianas (1200px -> 2 columnas para eventos) */
+@media (max-width: 1200px) {
+    .main-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .tutorial-and-benefits {
+        grid-template-columns: 1fr; /* Una sola columna */
+    }
+    .hero-banner {
+        flex-direction: column;
+        min-height: auto;
+    }
+    .hero-content {
+        padding: 2rem;
+        text-align: center;
+    }
+    .hero-image {
+        height: 250px;
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Tablet vertical (992px -> Layout de una columna) */
 @media (max-width: 992px) {
     .layout {
         flex-direction: column;
@@ -471,53 +759,80 @@ body {
     .sidebar {
         width: 100%;
         position: static;
-        order: -1; /* Mover el cupón arriba en móvil */
+        order: -1;
+    }
+    
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Navegación Móvil */
+    .search-login {
+        display: none; /* Oculta la búsqueda y el botón de perfil */
+    }
+    
+    .hamburger {
+        display: flex; /* Muestra el icono de hamburguesa */
+    }
+    
+    .main-nav {
+        /* Oculto por defecto en móvil */
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 80px; /* Debajo del header */
+        left: 0;
+        background: var(--color-dark);
+        padding: 1rem 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .main-nav.active {
+        display: block; /* La clase 'active' la muestra con JavaScript */
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .main-nav li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 1rem 2rem;
+        text-align: left;
+    }
+    
+    .nav-link::after {
+        display: none; /* Quitamos el indicador inferior para el menú móvil */
+    }
+    .nav-link.active {
+        background-color: var(--color-primary-dark);
     }
 }
 
-/* Móvil */
+/* Móvil (768px -> Ajustes menores) */
 @media (max-width: 768px) {
-    /* Mostrar hamburguesa */
-    .hamburger {
-        display: flex;
-    }
-
-    /* Ocultar menú normal */
-    .main-nav {
-        display: none;
-        width: 100%;
-        background: #111;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        padding: 1rem 2rem;
-        flex-direction: column;
-        gap: 1rem;
-        border-bottom: 3px solid var(--color-primary);
-    }
-
-    .main-nav.nav-active {
-        display: flex;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        gap: 1rem;
-        width: 100%;
-    }
-
-    .search-login {
-        display: none; /* Ocultar en móvil para simplificar */
-    }
-
     .site-header {
         padding: 1rem;
     }
-}
+    .brand {
+        font-size: 1.8rem;
+    }
 
-/* Teléfonos pequeños */
-@media (max-width: 480px) {
-    .evento figure img {
-        height: 150px;
+    .layout {
+        padding: 0 1rem;
+    }
+
+    .monto {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
     }
 }

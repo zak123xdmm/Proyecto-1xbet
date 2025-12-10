@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Mis Apuestas | SportsBet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header class="site-header">
-    <div class="brand">SportsBet</div>
+    <h1 class="brand">SportsBet</h1>
 
     <div class="hamburger" id="hamburger">
         <span></span><span></span><span></span>
@@ -22,17 +23,23 @@
             <li><a href="perfil.html" class="nav-link">Mi Perfil</a></li>
         </ul>
     </nav>
+    
+    <form class="search-login">
+        <input type="search" placeholder="Buscar eventos..." aria-label="Buscar eventos">
+        <button type="button" onclick="window.location.href='perfil.html'" class="btn login">Mi Perfil</button>
+    </form>
 </header>
 
-<main class="layout">
-    <h1 style="grid-column:1/-1;">Mis apuestas activas</h1>
+<main class="layout" style="max-width: 1200px; margin: 2rem auto; padding: 0 2rem; display: block;">
+    <h1>Mis apuestas activas</h1>
 
     <div id="contenedor-boletos" class="lista-boletos">
-        </div>
+        <p>Cargando tus boletos...</p>
+    </div>
 </main>
 
 <footer class="site-footer">
-    <p>SportsBet 2025 — Proyecto académico (2do semestre)</p>
+    <p>SportsBet 2025 — Proyecto académico</p>
     <nav class="footer-nav">
         <ul>
             <li><a href="#">Términos</a></li>
@@ -42,7 +49,6 @@
     </nav>
 </footer>
 
-<script src="app.js"></script> 
-
-</body>
+<script src="script.js"></script>
+<script src="apuestas.js"></script> </body>
 </html>

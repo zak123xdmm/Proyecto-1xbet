@@ -2,13 +2,16 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Perfil | TuCasaDeApuestas</title>
+    <title>Mi Perfil | SportsBet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
-<body>
+<body id="perfil-page">
 
 <header class="site-header">
-    <div class="brand">TuCasaDeApuestas</div>
+    <h1 class="brand">SportsBet</h1>
 
     <div class="hamburger" id="hamburger">
         <span></span><span></span><span></span>
@@ -19,21 +22,65 @@
             <li><a href="inicio.html" class="nav-link">Inicio</a></li>
             <li><a href="partidos.html" class="nav-link">Partidos</a></li>
             <li><a href="mis-apuestas.html" class="nav-link">Mis Apuestas</a></li>
-            <li><a href="perfil.html" class="nav-link">Mi Perfil</a></li>
+            <li><a href="perfil.html" class="nav-link active">Mi Perfil</a></li>
         </ul>
     </nav>
+    
+    <form class="search-login">
+        <input type="search" placeholder="Buscar eventos..." aria-label="Buscar eventos">
+        <button type="button" onclick="window.location.href='perfil.html'" class="btn login">Mi Perfil</button>
+    </form>
 </header>
 
-<main class="layout">
-    <h1>Mi Perfil</h1>
+<main class="layout" style="max-width: 800px; margin: 2rem auto; display: block;">
+    
+    <div>
+        <h1>Mi Perfil</h1>
+        
+        <p><b>Nombre:</b> <span id="perfil-name">Usuario Invitado</span></p>
+        <p><b>Email:</b> <span id="perfil-email">No logueado</span></p>
+        <p><b>Saldo Actual:</b> <span id="perfil-saldo" style="font-weight: 700;">1000.00</span> Bs</p>
 
-    <p>Nombre: Usuario Demo</p>
-    <p>Saldo: 0 Bs</p>
+        <hr style="margin: 1.5rem 0;">
 
-    <p>Pronto agregaré edición de datos, foto y saldo.</p>
+        <div id="google-login-container" style="text-align: center; margin-top: 1rem;">
+            <h3>Inicia Sesión con Google</h3>
+            <p style="margin-bottom: 1rem;">Usa tu cuenta de Google para guardar tu saldo y apuestas.</p>
+            
+            <div id="g_id_onload"
+     data-client_id="824133335574-akud8i2q05k2ufbft4083ickeu781d33.apps.googleusercontent.com" 
+     data-context="signin"
+     data-ux_mode="popup"
+     data-callback="handleCredentialResponse"
+     data-auto_prompt="false">
+                          </div>
+
+            <div class="g_id_signin"
+                 data-type="standard"
+                 data-size="large"
+                 data-theme="outline"
+                 data-text="sign_in_with"
+                 data-shape="rectangular"
+                 data-logo_alignment="left">
+            </div>
+        </div>
+        
+        <button id="logout-btn" class="btn login" style="display: none; background: #f44336; margin-top: 1.5rem;">Cerrar Sesión</button>
+    </div>
+
 </main>
 
-<script src="app.js"></script>
+<footer class="site-footer">
+    <p>SportsBet 2025 — Proyecto académico</p>
+    <nav class="footer-nav">
+        <ul>
+            <li><a href="#">Términos</a></li>
+            <li><a href="#">Privacidad</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+</footer>
 
+<script src="script.js"></script>
 </body>
 </html>

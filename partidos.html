@@ -16,143 +16,105 @@
             <ul>
                 <li><a href="inicio.html" class="nav-link">Inicio</a></li>
                 <li><a href="partidos.html" class="nav-link active">Partidos</a></li>
-                <li><a href="mis-apuestas.html" class="nav-link">Mis apuestas</a></li>
-                <li><a href="perfil.html" class="nav-link">Perfil</a></li>
+                <li><a href="mis-apuestas.html" class="nav-link">Mis Apuestas</a></li>
+                <li><a href="perfil.html" class="nav-link">Mi Perfil</a></li>
             </ul>
         </nav>
 
         <form class="search-login">
             <input type="search" placeholder="Buscar eventos..." aria-label="Buscar eventos">
-            <button type="button" class="btn login">Iniciar sesión</button>
+            <button type="button" onclick="window.location.href='perfil.html'" class="btn login">Mi Perfil</button>
         </form>
     </header>
 
-    <hr/>
-
-    <div class="layout">
-
+    <main class="layout">
+        
         <aside class="sidebar">
-            <section class="coupon">
-                <h2>Tu cupón</h2>
-                <p id="texto-vacio">No has seleccionado apuestas todavía.</p>
+            <h2>Mi Cupón de Apuestas</h2>
+            
+            <p id="texto-vacio">Selecciona una cuota para comenzar.</p>
 
-                <div id="lista-apuestas"></div>
-
-                <div class="montos">
-                    <button class="monto" data-monto="5">5 Bs</button>
-                    <button class="monto" data-monto="10">10 Bs</button>
-                    <button class="monto" data-monto="20">20 Bs</button>
-                    <input type="number" id="monto-personalizado" placeholder="Monto pers." class="input-monto">
-
+            <div id="lista-apuestas">
                 </div>
 
-                <p><b>Monto:</b> <span id="monto-apuesta">0</span> Bs</p>
-                <p><b>Ganancia posible:</b> <span id="ganancia">0</span> Bs</p>
+            <div class="montos">
+                <button class="btn monto" data-monto="10">10 Bs</button>
+                <button class="btn monto" data-monto="50">50 Bs</button>
+                <button class="btn monto" data-monto="100">100 Bs</button>
+            </div>
+            
+            <input type="number" id="monto-personalizado" placeholder="Monto personalizado (Bs)" min="1" step="any">
 
-                <button id="apostar-btn" class="btn apostar">Realizar Apuesta</button>
-            </section>
+               <p style="margin-top: 1.5rem;">Cuota total: <span id="cuota-total" style="font-weight: 700;">1.00</span></p>
+               <p>Monto apostado: <span id="monto-apuesta" style="font-weight: 700;">0.00</span> Bs</p>
+               <p style="font-size: 1.2rem;">Ganancia posible: <span id="ganancia" style="color:var(--color-green); font-weight: 700;">0.00</span> Bs</p>
 
-            <section>
-                <h2>Accesos rápidos</h2>
-                <ul>
-                    <li><a href="mis-apuestas.html">Mis apuestas</a></li>
-                    <li><a href="#">Historial</a></li>
-                    <li><a href="#">Estadísticas</a></li>
-                </ul>
-            </section>
+               <button class="btn apostar" id="apostar-btn" disabled>APOSTAR</button>
 
-            <section>
-                <h2>Notas</h2>
-                <p>Apuesta con responsabilidad 🔞</p>
-            </section>
+            
         </aside>
 
-        <main class="main-content">
+        <div class="main-content">
+            
+            <h2 id="futbol">⚽ Fútbol - La Liga</h2>
 
-            <h2 style="grid-column:1/-1;">⚽ LaLiga</h2>
             <article class="evento">
                 <h3>Real Madrid vs Barcelona</h3>
-                <figure><img src="https://www.record.com.mx/sites/default/files/articulos/2025/10/25/real-madrid-vs-barcelona-donde-cuando-y-que-hora-ver-el-clasico-de-laliga-de-espana.webp"><figcaption>Clásico español</figcaption></figure>
+                <figure><img src="imagenes/realmadridvsbarca.jpg" alt="Clásico Español"><figcaption>Liga Española</figcaption></figure>
                 <div class="opciones">
-                    <button class="cuota" data-evento="Real Madrid vs Barcelona" data-seleccion="1" data-cuota="2.45">1 - 2.45</button>
-                    <button class="cuota" data-evento="Real Madrid vs Barcelona" data-seleccion="X" data-cuota="3.20">X - 3.20</button>
-                    <button class="cuota" data-evento="Real Madrid vs Barcelona" data-seleccion="2" data-cuota="2.80">2 - 2.80</button>
+                    <button class="cuota" data-evento="Real Madrid vs Barcelona" data-seleccion="Real Madrid" data-cuota="2.20">1 - 2.20</button>
+                    <button class="cuota" data-evento="Real Madrid vs Barcelona" data-seleccion="Empate" data-cuota="3.40">X - 3.40</button>
+                    <button class="cuota" data-evento="Real Madrid vs Barcelona" data-seleccion="Barcelona" data-cuota="3.00">2 - 3.00</button>
                 </div>
             </article>
 
             <article class="evento">
                 <h3>Arsenal vs Chelsea</h3>
-                <figure><img src="https://cdn-0001.qstv.on.epicgames.com/ERgZRYSIzxwpLKuYrp/image/landscape_comp.jpeg"><figcaption>Premier League</figcaption></figure>
+                <figure><img src="imagenes/arsenalvschelsea.jpeg" alt="Liga Inglesa"><figcaption>Premier League</figcaption></figure>
                 <div class="opciones">
-                    <button class="cuota" data-evento="Arsenal vs Chelsea" data-seleccion="1" data-cuota="2.10">1 - 2.10</button>
-                    <button class="cuota" data-evento="Arsenal vs Chelsea" data-seleccion="X" data-cuota="3.00">X - 3.00</button>
-                    <button class="cuota" data-evento="Arsenal vs Chelsea" data-seleccion="2" data-cuota="3.20">2 - 3.20</button>
+                    <button class="cuota" data-evento="Liverpool vs Man City" data-seleccion="Liverpool" data-cuota="2.40">1 - 2.40</button>
+                    <button class="cuota" data-evento="Liverpool vs Man City" data-seleccion="Empate" data-cuota="3.50">X - 3.50</button>
+                    <button class="cuota" data-evento="Liverpool vs Man City" data-seleccion="Man City" data-cuota="2.80">2 - 2.80</button>
                 </div>
             </article>
 
-            <h2 style="grid-column:1/-1;">🏀 NBA</h2>
+            <h2 id="basket" style="grid-column:1/-1;">🏀 Baloncesto - NBA</h2>
+            
             <article class="evento">
                 <h3>Lakers vs Warriors</h3>
-                <figure><img src="https://artwork.espncdn.com/events/401469008/16x9/1280x720_20230130214107.jpg"><figcaption>NBA</figcaption></figure>
+                <figure><img src="imagenes/LakersvsWarriors.jpg" alt="NBA"><figcaption>NBA</figcaption></figure>
                 <div class="opciones">
-                    <button class="cuota" data-evento="Lakers vs Warriors" data-seleccion="1" data-cuota="1.95">1 - 1.95</button>
-                    <button class="cuota" data-evento="Lakers vs Warriors" data-seleccion="2" data-cuota="1.85">2 - 1.85</button>
+                    <button class="cuota" data-evento="Lakers vs Celtics" data-seleccion="Lakers" data-cuota="1.85">1 - 1.85</button>
+                    <button class="cuota" data-evento="Lakers vs Celtics" data-seleccion="Celtics" data-cuota="1.95">2 - 1.95</button>
                 </div>
             </article>
 
-            <article class="evento">
-                <h3>Celtics vs Heat</h3>
-                <figure><img src="https://wp.clutchpoints.com/wp-content/uploads/2025/02/celtics-vs-heat-prediction-odds-pick-how-to-watch.jpg?w=1200"><figcaption>NBA Este</figcaption></figure>
-                <div class="opciones">
-                    <button class="cuota" data-evento="Celtics vs Heat" data-seleccion="1" data-cuota="1.70">1 - 1.70</button>
-                    <button class="cuota" data-evento="Celtics vs Heat" data-seleccion="2" data-cuota="2.20">2 - 2.20</button>
-                </div>
-            </article>
+            <h2 id="tenis" style="grid-column:1/-1;">🎾 Tenis - ATP</h2>
 
-            <h2 style="grid-column:1/-1;">🎾 Tenis ATP</h2>
             <article class="evento">
                 <h3>Djokovic vs Alcaraz</h3>
-                <figure><img src="https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg"><figcaption>ATP</figcaption></figure>
+                <figure><img src="imagenes/alcaraz-djokovic-roland-sf-preview.jpg" alt="Tenis ATP"><figcaption>ATP</figcaption></figure>
                 <div class="opciones">
-                    <button class="cuota" data-evento="Djokovic vs Alcaraz" data-seleccion="1" data-cuota="1.70">1 - 1.70</button>
-                    <button class="cuota" data-evento="Djokovic vs Alcaraz" data-seleccion="2" data-cuota="2.10">2 - 2.10</button>
-                </div>
-            </article>
-
-            <article class="evento">
-                <h3>Nadal vs Federer</h3>
-                <figure><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrs6fJZX3efEOaCIV3M8kT1JTc8lCy8ZDxEg&s"><figcaption>ATP</figcaption></figure>
-                <div class="opciones">
-                    <button class="cuota" data-evento="Nadal vs Federer" data-seleccion="1" data-cuota="1.90">1 - 1.90</button>
-                    <button class="cuota" data-evento="Nadal vs Federer" data-seleccion="2" data-cuota="1.90">2 - 1.90</button>
+                    <button class="cuota" data-evento="Djokovic vs Alcaraz" data-seleccion="Djokovic" data-cuota="1.70">1 - 1.70</button>
+                    <button class="cuota" data-evento="Djokovic vs Alcaraz" data-seleccion="Alcaraz" data-cuota="2.10">2 - 2.10</button>
                 </div>
             </article>
             
-            <h2 style="grid-column:1/-1;">🎮 Esports - LoL</h2>
+            <h2 id="esports" style="grid-column:1/-1;">🎮 Esports - LoL</h2>
+            
             <article class="evento">
                 <h3>G2 vs Liquid</h3>
-                <figure><img src="https://i.ytimg.com/vi/XkSlkhWATzM/maxresdefault.jpg"><figcaption>League of Legends</figcaption></figure>
+                <figure><img src="imagenes/liquidvsg2.jpg" alt="eSports"><figcaption>League of Legends</figcaption></figure>
                 <div class="opciones">
-                    <button class="cuota" data-evento="G2 vs Liquid" data-seleccion="1" data-cuota="1.90">1 - 1.90</button>
-                    <button class="cuota" data-evento="G2 vs Liquid" data-seleccion="2" data-cuota="1.90">2 - 1.90</button>
+                    <button class="cuota" data-evento="G2 vs Liquid" data-seleccion="G2" data-cuota="1.90">1 - 1.90</button>
+                    <button class="cuota" data-evento="G2 vs Liquid" data-seleccion="Liquid" data-cuota="1.90">2 - 1.90</button>
                 </div>
             </article>
-
-            <article class="evento">
-                <h3>Fnatic vs Cloud9</h3>
-                <figure><img src="https://i.ytimg.com/vi/RFbLbXBnE5g/hq720.jpg"><figcaption>League of Legends</figcaption></figure>
-                <div class="opciones">
-                    <button class="cuota" data-evento="Fnatic vs Cloud9" data-seleccion="1" data-cuota="2.10">1 - 2.10</button>
-                    <button class="cuota" data-evento="Fnatic vs Cloud9" data-seleccion="2" data-cuota="1.80">2 - 1.80</button>
-                </div>
-            </article>
-
-
-        </main>
-    </div>
+        </div>
+    </main>
 
     <footer class="site-footer">
-        <p>SportsBet 2025 — Proyecto académico (2do semestre)</p>
+        <p>SportsBet 2025 — Proyecto académico</p>
         <nav class="footer-nav">
             <ul>
                 <li><a href="#">Términos</a></li>
@@ -162,6 +124,6 @@
         </nav>
     </footer>
 
-    <script src="app.js"></script>
-</body>
+    <script src="script.js"></script>
+    <script src="apuestas.js"></script> </body>
 </html>

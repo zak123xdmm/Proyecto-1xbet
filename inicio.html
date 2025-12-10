@@ -2,13 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Inicio | TuCasaDeApuestas</title>
+    <title>Inicio | SportsBet</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header class="site-header">
-    <div class="brand">TuCasaDeApuestas</div>
+    <h1 class="brand">SportsBet</h1>
 
     <div class="hamburger" id="hamburger">
         <span></span><span></span><span></span>
@@ -16,44 +17,110 @@
 
     <nav class="main-nav" id="nav">
         <ul>
-            <li><a href="inicio.html" class="nav-link">Inicio</a></li>
+            <li><a href="inicio.html" class="nav-link active">Inicio</a></li>
             <li><a href="partidos.html" class="nav-link">Partidos</a></li>
             <li><a href="mis-apuestas.html" class="nav-link">Mis Apuestas</a></li>
             <li><a href="perfil.html" class="nav-link">Mi Perfil</a></li>
         </ul>
     </nav>
+    
+    <form class="search-login">
+        <button type="button" onclick="window.location.href='perfil.html'" class="btn login">Mi Perfil</button>
+    </form>
 </header>
 
-<main class="layout inicio">
+<main class="layout inicio-layout">
 
-    <section class="bienvenida">
-        <h1>Bienvenido a TuCasaDeApuestas 🎉</h1>
-        <p>
-            La manera más fácil, rápida y divertida de apostar en tus deportes favoritos.
-        </p>
-        <a href="partidos.html" class="btn apostar" style="max-width:200px; text-align:center;">
-            Ver Partidos
-        </a>
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1>Vive la Emoción del Deporte.</h1>
+            <p>Apuesta en tus eventos favoritos con las cuotas más competitivas del mercado.</p>
+            <a href="partidos.html" class="btn apostar">Empieza a Apostar Ahora</a>
+        </div>
+        <div class="hero-image"> 
+            <img src="imagenes/épica-celebración-de-partido-fútbol-en-un-estadio-abarrotado-futbolista-masculino-sentado-el-campo-c.jpg" alt="Jugador de fútbol celebrando en un estadio lleno."> 
+        </div>
     </section>
 
-    <section class="tutorial">
-        <h2>¿Cómo apostar? 🧠</h2>
-        <ol>
-            <li>🔍 Ingresa a <b>Partidos</b> y elige un evento.</li>
-            <li>🎯 Selecciona la cuota que deseas.</li>
-            <li>💰 Ingresa tu monto (manual o botón rápido).</li>
-            <li>🧾 Revisa tu cupón en la izquierda.</li>
-            <li>🔥 Haz clic en <b>Realizar apuesta</b>.</li>
-        </ol>
-
-        <p>
-            Puedes hacer <b>apuestas combinadas</b> seleccionando varios eventos, ¡y la ganancia se multiplica!
-        </p>
+    <section class="featured-categories">
+        <h2>Categorías Destacadas</h2>
+        <div class="categories-grid">
+            <a href="partidos.html#futbol" class="category-card">
+                <img src="imagenes/ligas.jpg" alt="Fútbol">
+                <h3>Fútbol</h3>
+                <p>Las ligas más grandes</p>
+            </a>
+            <a href="partidos.html#baloncesto" class="category-card">
+                <img src="imagenes/euronba.jpeg" alt="Baloncesto">
+                <h3>Baloncesto</h3>
+                <p>NBA, Euroliga y más</p>
+            </a>
+            <a href="partidos.html#tenis" class="category-card">
+                <img src="imagenes/slams.jpg" alt="Tenis">
+                <h3>Tenis</h3>
+                <p>ATP y Grand Slams</p>
+            </a>
+            <a href="partidos.html#esports" class="category-card">
+                <img src="imagenes/esports.jpg" alt="Esports">
+                <h3>Esports</h3>
+                <p>LoL, CS2, Dota 2</p>
+            </a>
+        </div>
     </section>
+
+    <section class="tutorial-and-benefits">
+        <div class="tutorial-box">
+            <h2>¿Cómo Empezar a Apostar? 🧠</h2>
+            <ol>
+                <li>🔍 Ingresa a la sección de <b>Partidos</b>.</li>
+                <li>🎯 Selecciona la cuota que deseas en tu evento favorito.</li>
+                <li>💰 Define el monto en el cupón y haz clic en Apostar.</li>
+                <li>✅ Confirma tu boleto en <b>Mis Apuestas</b>.</li>
+            </ol>
+        </div>
+        
+        <div class="benefits-box">
+            <h2>Beneficios</h2>
+            <ul>
+                <li>📊 Estadísticas en tiempo real</li>
+                <li>🔒 Confianza y seguridad en tus datos</li>
+                <li>📞 Soporte 24/7</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="latest-news">
+        <h2>Últimas Noticias</h2>
+        <div class="news-grid">
+            <article class="news-card">
+                <img src="imagenes/ucl-25-26-format.jpg" alt="Noticia 1">
+                <h3>La nueva jornada de la Champions League</h3>
+                <p>Análisis previo a los partidos mas importantes del año</p>
+                <a href="#">Leer más</a>
+            </article>
+            <article class="news-card">
+                <img src="imagenes/luka.jpg" alt="Noticia 2">
+                <h3>La nueva estrella de los Angeles Lakers</h3>
+                <p>El joven jugador que está rompiendo todos los récords...</p>
+                <a href="#">Leer más</a>
+            </article>
+        </div>
+    </section>
+
 
 </main>
 
-<script src="app.js"></script>
+<footer class="site-footer">
+    <p>SportsBet 2025 — Proyecto académico</p>
+    <nav class="footer-nav">
+        <ul>
+            <li><a href="#">Términos</a></li>
+            <li><a href="#">Privacidad</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+</footer>
 
+<script src="script.js"></script>
 </body>
 </html>
